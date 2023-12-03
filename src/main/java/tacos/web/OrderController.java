@@ -1,5 +1,6 @@
 package tacos.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import lombok.extern.slf4j.Slf4j;
 import tacos.Taco;
 import tacos.TacoOrder;
+import tacos.data.OrderRepository;
 
 @Slf4j
 @Controller
@@ -20,6 +22,13 @@ public class OrderController {
 	
 	private static final org.slf4j.Logger log =
 			org.slf4j.LoggerFactory.getLogger(DesignTacoController.class);
+	
+	private OrderRepository orderRepository;
+	
+	@Autowired
+	public OrderController(OrderRepository orderRepository) {
+		this.orderRepository = orderRepository;
+	}
     
 	@ModelAttribute(name="tacoOrder")
 	public TacoOrder order() {
@@ -39,6 +48,7 @@ public class OrderController {
 	@PostMapping
 	public String processOrder(TacoOrder tacoOrder, SessionStatus sessionStatus)  {
 		log.info("Order submitted: {}", tacoOrder.toString());
+		this.orderRepository.save(tacoOrder);
 		return "redirect:/";
 	}
 }
