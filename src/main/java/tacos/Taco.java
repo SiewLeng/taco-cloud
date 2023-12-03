@@ -1,6 +1,7 @@
 package tacos;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -9,8 +10,10 @@ import lombok.Data;
 public class Taco {
 	
 	private String name;
-	
 	private List<Ingredient> ingredients;
+	private Long id;
+	private Date createdAt = new Date();
+	
 	
 	public Taco() {
 		this.name = "";
@@ -43,6 +46,22 @@ public class Taco {
 		}
 		result += "\n" + "]}";
 		return result;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 	
 }

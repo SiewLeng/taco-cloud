@@ -1,13 +1,18 @@
 package tacos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class TacoOrder {
+public class TacoOrder implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	private Long id;
+	private Date placedAt;
 	private String deliveryName;
 	private String deliveryStreet;
 	private String deliveryCity;
@@ -16,7 +21,6 @@ public class TacoOrder {
 	private String ccNumber;
 	private String ccExpiry;
 	private String ccCVV;
-
 	private List<Taco> tacos;;
 	
 	public TacoOrder() {
@@ -29,6 +33,22 @@ public class TacoOrder {
 		this.setCcExpiry("");
 		this.setCcCVV("");
 		this.tacos = new ArrayList<>();
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getPlacedAt() {
+		return placedAt;
+	}
+
+	public void setPlacedAt(Date placedAt) {
+		this.placedAt = placedAt;
 	}
 	
 	public String getDeliveryName() {
@@ -121,5 +141,4 @@ public class TacoOrder {
 		result += "\n" + "]}";
 		return result;
 	}
-
 }
