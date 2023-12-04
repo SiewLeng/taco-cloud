@@ -1,5 +1,6 @@
 package tacos.web;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,6 +76,7 @@ public class DesignTacoController {
 	@PostMapping
 	public String processTaco(Taco taco, 
 			@ModelAttribute TacoOrder tacoOrder) {
+		taco.setCreatedAt(new Date());
 		tacoOrder.addTaco(taco);
 		log.info("Processing taco: {}", taco.toString());
 		log.info("TacoOrder: {}", tacoOrder.toString());

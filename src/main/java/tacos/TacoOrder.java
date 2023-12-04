@@ -11,7 +11,7 @@ import lombok.Data;
 public class TacoOrder  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private int id;
+	private long id;
 	private String deliveryName;
 	private String deliveryStreet;
 	private String deliveryCity;
@@ -36,12 +36,12 @@ public class TacoOrder  implements Serializable {
 		this.tacos = new ArrayList<>();
 	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

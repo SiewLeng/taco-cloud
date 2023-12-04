@@ -8,4 +8,10 @@ INSERT INTO ingredient (id, name, type) values ('LETC', 'Lettuce', 'VEGGIES');
 INSERT INTO ingredient(id, name, type) values ('CHED', 'Cheddar', 'CHEESE');
 INSERT INTO ingredient(id, name, type) values ('JACK', 'Monterrey Jack', 'CHEESE');
 INSERT INTO ingredient(id, name, type) values ('SLSA', 'Salsa', 'SAUCE');
-INSERT INTO ingredient(id, name, type) values ('SRCR', 'Sour Cream', 'SAUCE')
+INSERT INTO ingredient(id, name, type) values ('SRCR', 'Sour Cream', 'SAUCE');
+
+DELETE FROM taco_order;
+
+DELETE FROM taco;
+
+DELETE FROM taco_ingredient;
