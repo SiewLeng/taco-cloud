@@ -1,4 +1,4 @@
-package tacos;
+package tacos.entities;
 
 import java.util.ArrayList;
 import java.util.List;
