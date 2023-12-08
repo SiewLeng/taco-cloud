@@ -1,4 +1,4 @@
-package tacos.web;
+package tacos.controller;
 
 import java.util.HashMap;
 import java.util.Map;
