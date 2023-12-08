@@ -1,23 +1,48 @@
 package tacos.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
+@Entity
 @Data
-public class TacoOrder {
+public class TacoOrder implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
 	private String deliveryName;
+	
 	private String deliveryStreet;
+	
 	private String deliveryCity;
+	
 	private String deliveryState;
+	
 	private String deliveryZip;
+	
 	private String ccNumber;
+	
 	private String ccExpiry;
+	
 	private String ccCVV;
-
-	private List<Taco> tacos;;
+	
+	private final Date placedAt = new Date();
+    
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Taco> tacos;
 	
 	public TacoOrder() {
 		this.setDeliveryName("");
@@ -101,6 +126,10 @@ public class TacoOrder {
 	
 	public void addTaco(Taco taco) {
 		this.tacos.add(taco);
+	}
+	
+	public Date getPlacedAt() {
+		return placedAt;
 	}
 	
 	@Override
